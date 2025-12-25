@@ -29,7 +29,7 @@
 ## 環境構築
 
 ```bash
-git clone <https://github.com/chiisan-2025/pigry.git>
+git clone https://github.com/chiisan-2025/pigry.git
 cd pigry
 docker compose up -d
 php artisan migrate:fresh --seed
