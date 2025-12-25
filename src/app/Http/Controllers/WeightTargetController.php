@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\WeightTarget;
+use App\Http\Requests\UpdateWeightTargetRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,22 +13,17 @@ class WeightTargetController extends Controller
     {
         $target = WeightTarget::firstOrCreate(
             ['user_id' => Auth::id()],
-            ['target_weight' => 50] // 初期値（適当でOK）
+            ['target_weight' => 50]
         );
 
         return view('weight_targets.edit', compact('target'));
     }
 
-    public function update(Request $request)
+    public function update(UpdateWeightTargetRequest $request)
     {
-        $validated = $request->validate([
-            'target_weight' => ['required', 'numeric', 'between:1,999.9'],
-        ]);
-
         WeightTarget::updateOrCreate(
-            ['user_id' => Auth::id()],
-            ['target_weight' => $validated['target_weight']]
-        );
+        ['user_id' => Auth::id()],
+        ['target_weight' => $request->input('target_weight')]);
 
         return redirect()->route('weight_logs.index');
     }

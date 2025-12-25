@@ -83,9 +83,7 @@
                     <td>{{ $log->exercise_content ?? '-' }}</td>
 
                         <td>
-                            <a href="{{ route('weight_logs.index', ['modal' => 'edit', 'id' => $log->id]) }}">
-                                ✏️
-                            </a>
+                            <a href="{{ route('weight_logs.edit', $log) }}">✏️</a>
 
                             <form method="POST" action="{{ route('weight_logs.destroy', $log) }}" style="display:inline">
                                 @csrf

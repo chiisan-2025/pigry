@@ -29,21 +29,11 @@ Route::middleware('guest')->group(function () {
         return redirect('/login');
     })->name('logout');
 
+    Route::middleware('auth')->group(function () {
+        Route::resource('weight_logs', WeightLogController::class)->only([
+        'index','create','store','edit','update','destroy'
+    ]);
 
-Route::middleware('auth')->group(function () {
-    // 一覧
-    Route::get('/weight_logs', [WeightLogController::class, 'index'])->name('weight_logs.index');
-
-    // 追加
-    Route::get('/weight_logs/create', [WeightLogController::class, 'create'])->name('weight_logs.create');
-    Route::post('/weight_logs', [WeightLogController::class, 'store'])->name('weight_logs.store');
-
-    // 編集
-    Route::get('/weight_logs/{weightLog}/edit', [WeightLogController::class, 'edit'])->name('weight_logs.edit');
-    Route::put('/weight_logs/{weightLog}', [WeightLogController::class, 'update'])->name('weight_logs.update');
-
-    // 削除
-    Route::delete('/weight_logs/{weightLog}', [WeightLogController::class, 'destroy'])->name('weight_logs.destroy');
 
     // 検索（まずは日付範囲だけでOK）
     Route::get('/weight_logs/search', [WeightLogController::class, 'search'])->name('weight_logs.search');
@@ -52,6 +42,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/weight_target/edit', [WeightTargetController::class, 'edit'])->name('weight_target.edit');
     Route::put('/weight_target', [WeightTargetController::class, 'update'])->name('weight_target.update');
 });
-Route::get('/', function () {
+    Route::get('/', function () {
     return redirect()->route('weight_logs.index');
 });
