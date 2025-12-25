@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    background: #f7f7f7;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background: white;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    color: #e879f9;
+    margin: 0;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    padding: 6px 14px;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.card h2 {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.card p {
+    margin: 8px 0 0;
+    font-size: 24px;
+}
+
+.result-text {
+    margin: 10px 0 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+table tbody tr:hover td {
+    background-color: #dcd5f3 !important;
+}
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.modal {
+    width: min(720px, 100%);
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.modal-close {
+    text-decoration: none;
+    font-size: 24px;
+    color: #333;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.btn.primary {
+    background: #e879f9;
+    border-color: #e879f9;
+    color: #fff;
+}
+
+.error {
+    color: red;
+    margin: 6px 0 0;
+}

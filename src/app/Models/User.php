@@ -42,4 +42,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function weightLogs()
+    {
+        return $this->hasMany(\App\Models\WeightLog::class);
+    }
+
+    public function weightTarget()
+    {
+        return $this->hasOne(\App\Models\WeightTarget::class);
+    }
 }
