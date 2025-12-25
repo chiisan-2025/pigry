@@ -1,30 +1,37 @@
-<h1>PiGLy</h1>
-<h2>ログイン</h2>
+@extends('layouts.app')
 
-<form method="POST" action="{{ route('login') }}">
-    @csrf
+@section('content')
+<div class="auth-wrapper">
+    <div class="auth-card">
 
-    <div>
+        <h1 class="auth-logo">PiGLy</h1>
+        <h2 class="auth-title">ログイン</h2>
+
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+
+        <div class="auth-field">
         <label>メールアドレス</label>
-        <div>
-            <input name="email" value="{{ old('email') }}">
-        </div>
+        <input name="email" value="{{ old('email') }}">
         @error('email')
-            <p style="color:red;">{{ $message }}</p>
+            <p class="error">{{ $message }}</p>
         @enderror
-    </div>
-
-    <div>
-        <label>パスワード</label>
-        <div>
-            <input name="password" type="password">
         </div>
+
+        <div class="auth-field">
+        <label>パスワード</label>
+        <input name="password" type="password">
         @error('password')
-            <p style="color:red;">{{ $message }}</p>
+            <p class="error">{{ $message }}</p>
         @enderror
-    </div>
+        </div>
 
-    <button type="submit">ログイン</button>
-</form>
+        <button type="submit" class="btn primary auth-btn">ログイン</button>
+    </form>
 
-<a href="{{ url('/register/step1') }}">アカウント作成はこちら</a>
+    <a href="{{ url('/register/step1') }}" class="auth-link">
+      アカウント作成はこちら
+    </a>
+
+  </div>
+</div>
